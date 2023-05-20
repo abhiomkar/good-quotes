@@ -62,3 +62,17 @@ footer a {
   text-decoration: none;
   font-weight: bold;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+  }
+
+  .gq-quote {
+    color: #eeeeee;
+  }
+  
+  h2.gq-author {
+    color: #969696;
+  }
+}
