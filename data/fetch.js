@@ -78,3 +78,6 @@ scrapeHTMLPages(url, numPages)
   .catch((error) => {
     console.log(error);
   });
+
+// TODO: Filter non-english quotes.
+// TODO: Filter empty quotes.

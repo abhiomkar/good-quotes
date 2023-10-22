@@ -2,9 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>New Tab</title>
-  <meta name="description" content="">
+  <meta name="description" content="Chrome new tab showing inspirational quotes">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,19 +11,21 @@
 
 <div id="app"></div>
 
-<footer>Powered by<br/><a href="http://goodreads.com">Goodreads.com</a></footer>
+<footer></footer>
 
-<script id="quote-template" type="text/x-handlebars-template">
-  <h1 class="gq-quote">{{quote}}</h1>
-  <h2 class="gq-author">&#8212; {{author}}</h2>
-</script>
+<template id="quote-template">
+  <h1 class="quote">
+    <span class="quote-text"></span>
+  </h1>
+  <h2 class="author">
+    &#8212; <span class="author-text"></span>
+  </h2>
+  <h2 class="title">
+    <span class="title-text"></span>
+  </h2>
+</template>
 
-<script id="progress-template" type="text/x-handlebars-template">
-  <div class="gq-progress">...</div>
-</script>
-
-<script src="js/handlebars.js"></script>
-<script src="app/app.js"></script>
+<script src="app/app.js" type="module"></script>
 
 </body>
 </html>

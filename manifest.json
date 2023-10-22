@@ -1,20 +1,15 @@
 {
-   "background": {
-      "persistent": false,
-      "scripts": [ "goodquotes.js" ]
-   },
-   "chrome_url_overrides": {
-      "newtab": "index.html"
-   },
-   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+   "manifest_version": 3,
+   "name": "Good Quotes",
+   "version": "0.3",
    "description": "Replace new tab page with inspirational quotes",
    "icons": {
       "128": "icon-128.png",
       "16": "icon-16.png",
       "48": "icon-48.png"
    },
-   "manifest_version": 2,
-   "name": "Good Quotes",
-   "offline_enabled": true,
-   "version": "0.2"
+   "chrome_url_overrides": {
+      "newtab": "index.html"
+   },
+   "offline_enabled": true
 }
