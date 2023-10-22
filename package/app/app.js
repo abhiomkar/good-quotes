@@ -4,7 +4,6 @@ class App {
     this.quotes = quotes;
     this.quoteTemplate = quoteTemplate;
 
-    console.log(this.getQuoteElement(this.getRandomItem(quotes)));
     this.renderQuoteElement(this.getQuoteElement(this.getRandomItem(quotes)));
   }
 
