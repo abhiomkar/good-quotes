@@ -38,10 +38,13 @@ async function scrapeHTMLPages(url, numPages) {
       if (/[\u0600-\u06FF]/.test(quote)) return;
 
       // Skip if quote string is too long
-      if (quote.length > 600) return;
+      if (quote.length > 350) return;
 
       // Skip if quotes string is too short (less than 3 words)
       if (quote.split(" ").length < 3) return;
+
+      // Skip if quote relates to religion
+      if (/\b(lord|god|jesus|christ|allah)\b/i.test(quote)) return;
 
       const authorOrTitleQuery = $(element).find(".authorOrTitle");
       const author = $(authorOrTitleQuery)
@@ -61,7 +64,7 @@ async function scrapeHTMLPages(url, numPages) {
       });
     });
 
-    print(`Fetched page: ${pageUrl}\nFound ${quotes.length} quotes so far.`);
+    print(`Fetched page: ${pageUrl} (Found ${quotes.length} quotes so far)`);
 
     // Wait to prevent timeout errors.
     await new Promise((r) => setTimeout(r, getRandomDelay()));
