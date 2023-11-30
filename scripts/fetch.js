@@ -61,11 +61,7 @@ async function scrapeHTMLPages(url, numPages) {
       });
     });
 
-    print(
-      `Found ${
-        $(".quoteText").length
-      } quotes on page ${url} of ${numPages} pages`
-    );
+    print(`Fetched page: ${pageUrl}\nFound ${quotes.length} quotes so far.`);
 
     // Wait to prevent timeout errors.
     await new Promise((r) => setTimeout(r, getRandomDelay()));
@@ -83,7 +79,7 @@ function getRandomDelay() {
 function print(progress) {
   process.stdout.clearLine(0);
   process.stdout.cursorTo(0);
-  process.stdout.write(progress + "%");
+  process.stdout.write(progress);
 }
 
 const url = "https://www.goodreads.com/quotes/tag/inspirational";
