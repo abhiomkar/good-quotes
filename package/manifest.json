@@ -1,7 +1,7 @@
 {
    "manifest_version": 3,
    "name": "Good Quotes",
-   "version": "0.3",
+   "version": "0.4",
    "description": "Replace new tab page with inspirational quotes",
    "icons": {
       "128": "icon-128.png",
