@@ -90,7 +90,7 @@ const numPages = 100;
 
 scrapeHTMLPages(url, numPages)
   .then((quotes) => {
-    console.log("Found", quotes.length, "quotes in total.");
+    console.log("\nFound", quotes.length, "quotes in total.");
     fs.writeFileSync(
       path.join(__dirname, "/goodquotes.json"),
       JSON.stringify(quotes, null, 2)
