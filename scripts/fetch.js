@@ -13,7 +13,6 @@ async function scrapeHTMLPages(url, numPages) {
 
   for (let i = 1; i <= numPages; i++) {
     const pageUrl = `${url}?page=${i}`;
-    console.log("Fetching page: ", pageUrl);
     const response = await axios.get(pageUrl);
     const html = response.data;
     const $ = cheerio.load(html);
@@ -31,6 +30,19 @@ async function scrapeHTMLPages(url, numPages) {
         .trim()
         .replace(/^“/, "")
         .replace(/”$/, "");
+
+      // Skip if quote string is empty
+      if (!quote) return;
+
+      // Skip if quote string is non-english (Arabic)
+      if (/[\u0600-\u06FF]/.test(quote)) return;
+
+      // Skip if quote string is too long
+      if (quote.length > 600) return;
+
+      // Skip if quotes string is too short (less than 3 words)
+      if (quote.split(" ").length < 3) return;
+
       const authorOrTitleQuery = $(element).find(".authorOrTitle");
       const author = $(authorOrTitleQuery)
         .first()
@@ -49,7 +61,11 @@ async function scrapeHTMLPages(url, numPages) {
       });
     });
 
-    console.log("Found", $(".quoteText").length, "quotes on page", i);
+    print(
+      `Found ${
+        $(".quoteText").length
+      } quotes on page ${url} of ${numPages} pages`
+    );
 
     // Wait to prevent timeout errors.
     await new Promise((r) => setTimeout(r, getRandomDelay()));
@@ -64,12 +80,18 @@ function getRandomDelay() {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const url = "https://www.goodreads.com/quotes";
+function print(progress) {
+  process.stdout.clearLine(0);
+  process.stdout.cursorTo(0);
+  process.stdout.write(progress + "%");
+}
+
+const url = "https://www.goodreads.com/quotes/tag/inspirational";
 const numPages = 100;
 
 scrapeHTMLPages(url, numPages)
   .then((quotes) => {
-    console.log(quotes);
+    console.log("Found", quotes.length, "quotes in total.");
     fs.writeFileSync(
       path.join(__dirname, "/goodquotes.json"),
       JSON.stringify(quotes, null, 2)
@@ -78,6 +100,3 @@ scrapeHTMLPages(url, numPages)
   .catch((error) => {
     console.log(error);
   });
-
-// TODO: Filter non-english quotes.
-// TODO: Filter empty quotes.
