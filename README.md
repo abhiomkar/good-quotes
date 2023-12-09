@@ -17,3 +17,8 @@ Replace new tab page with inspirational quotes
 - Open a new tab, click on 'Keep it' button in the confirmation dialog by Chrome browser.
 
 ## Deploy
+
+- Compress `good-quotes/package` directory.
+- Go to https://chrome.google.com/webstore/devconsole, and select 'Good Quotes' extension.
+- Go to Package, and upload compressed file.
+- Publish.
