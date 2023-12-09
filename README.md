@@ -10,4 +10,10 @@ Replace new tab page with inspirational quotes
 
 ## Test
 
+- Open Chrome browser.
+- Go to `chrome://extensions/`.
+- Click on 'Load unpacked' button.
+- Select `good-quotes/package` directory.
+- Open a new tab, click on 'Keep it' button in the confirmation dialog by Chrome browser.
+
 ## Deploy
