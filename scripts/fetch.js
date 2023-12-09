@@ -20,16 +20,17 @@ async function scrapeHTMLPages(url, numPages) {
     // Extract and process quotes from the HTML
     // Add them to the 'quotes' array
     $(".quoteText").each((index, element) => {
-      const quote = $(element)
-        .contents()
-        .filter(function () {
-          return this.nodeType === 3; // Node.TEXT_NODE
-        })
-        .first()
-        .text()
-        .trim()
-        .replace(/^“/, "")
-        .replace(/”$/, "");
+      const quoteNode = $(element).clone();
+      quoteNode.find(".authorOrTitle").remove();
+      quoteNode.find("br").replaceWith(" ");
+
+      let quote = quoteNode.text();
+      quote = quote.replace(/\n/g, " ").trim();
+
+      // Replace trailing em-dash character
+      quote = quote.replace(/―$/, "").trim();
+      quote = quote.replace(/^“/, "");
+      quote = quote.replace(/”$/, "");
 
       // Skip if quote string is empty
       if (!quote) return;
