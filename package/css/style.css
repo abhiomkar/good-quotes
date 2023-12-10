@@ -8,23 +8,20 @@ html {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
-}
-
-body,
-input {
   font-family: "Avenir", "helvetica neue", helvetica, arial, sans-serif;
+  font-weight: 500;
+  justify-content: center;
 }
 
 #app {
-  width: 50%;
   display: flex;
   flex-direction: column;
-  text-align: center;
   max-height: 100%;
+  text-align: center;
+  width: 50%;
 }
 
 .author,
@@ -34,26 +31,6 @@ input {
 
 .title {
   margin-top: 0;
-}
-
-footer {
-  opacity: 0.5;
-  padding-top: 0.5rem;
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-  text-align: right;
-  font-family: "Helvetica Neue", arial, sans-serif;
-  font-weight: 500;
-  font-size: 11px;
-  color: #aeaeae;
-  line-height: 16px;
-}
-
-footer a {
-  color: #969696;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .hidden {
