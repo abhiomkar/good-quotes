@@ -47,7 +47,8 @@ async function scrapeHTMLPages(url, numPages) {
       // Skip if quote relates to religion
       if (/\b(lord|god|jesus|christ|allah)\b/i.test(quote)) return;
 
-      // TODO: somehow the quote "Forgive, O Lord, my little jokes on Thee" is matched.
+      // Skip if quote contains any offensive words
+      if (/\b(boobs)\b/i.test(quote)) return;
 
       const authorOrTitleQuery = $(element).find(".authorOrTitle");
       const author = $(authorOrTitleQuery)
@@ -95,7 +96,7 @@ scrapeHTMLPages(url, numPages)
   .then((quotes) => {
     console.log("\nFound", quotes.length, "quotes in total.");
     fs.writeFileSync(
-      path.join(__dirname, "/goodquotes.json"),
+      path.join(__dirname, "/../package/goodquotes.json"),
       JSON.stringify(quotes, null, 2)
     );
   })
